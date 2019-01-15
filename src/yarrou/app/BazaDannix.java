@@ -24,7 +24,7 @@ public class BazaDannix {
 	public String getPutFile(){
 		return putFile;
 	}
-	private OknoVivodaZagryzki ovz;
+	private OknoDialogaZagruzki odz;
 	
 
 	public void saveBaza(String filePutsave,ArrayList<Products> bazaSaverProducts){
@@ -87,8 +87,8 @@ public class BazaDannix {
 			edaBazaProcess.add(izum);
 			edaBazaProcess.add(kuraga);
 		}
-		OknoVivodaZagryzki ovz =new OknoVivodaZagryzki(itogZagruzki);
-		ovz.setVisible(true);
+		OknoDialogaZagruzki odz =new OknoDialogaZagruzki(itogZagruzki);
+		odz.setVisible(true);
 	this.edaBaza=edaBazaProcess;
 	}
 }
