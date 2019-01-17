@@ -72,7 +72,8 @@ public class BazaDannix {
 					double belkiProduct=Double.parseDouble(productInBazaMass[2]);
 					double jiriProduct =Double.parseDouble(productInBazaMass[3]);
 					double uglevodiProduct=Double.parseDouble(productInBazaMass[4]);
-					Products productInBazaNew = new Products(nameProduct ,caloriiProduct,belkiProduct,jiriProduct,uglevodiProduct);
+					String iconProduct=productInBazaMass[5];
+					Products productInBazaNew = new Products(nameProduct ,caloriiProduct,belkiProduct,jiriProduct,uglevodiProduct,iconProduct);
 					edaBazaProcess.add(productInBazaNew);
 				}
 				System.out.println("кроличество продуктов в загруженной базе "+edaBazaProcess.size());
@@ -82,8 +83,8 @@ public class BazaDannix {
 
 		if(localBaza!=true){
 			itogZagruzki=("используется встроенная база данных");
-			Products izum = new Products("изюм",264.0,3.1,0.5,79.0);
-			Products kuraga = new Products("курага",215.0,3.4,0.5,63.0);
+			Products izum = new Products("изюм",264.0,3.1,0.5,79.,"yarrouappCaloriiWithGui/grafics/products/изюм.jpg");
+			Products kuraga = new Products("курага",215.0,3.4,0.5,63.0,"yarrouappCaloriiWithGui/grafics/products/курага.jpeg");
 			edaBazaProcess.add(izum);
 			edaBazaProcess.add(kuraga);
 		}

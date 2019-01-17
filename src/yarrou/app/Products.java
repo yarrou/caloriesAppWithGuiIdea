@@ -6,6 +6,7 @@ public class Products {
 	private Double belki;
 	private double jiri;
 	private double uglevodi;
+	private String putIcon;
 	public String getName(){
 		return name;
 	}
@@ -19,12 +20,13 @@ public class Products {
 	public void setEnergo(Double en){
 		this.energo=en;
 	}
-	public Products(String n, double e, double b, double j, double u){
+	public Products(String n, double e, double b, double j, double u,String ic){
 		this.setName(n);
 		this.setEnergo(e);
 		this.setBelki(b);
 		this.setJiri(j);
 		this.setUglevodi(u);
+		this.setPutIcon(ic);
 
 	}
 	public Double getBelki(){
@@ -44,6 +46,12 @@ public class Products {
 	}
 	public void setUglevodi(double ug){
 		this.uglevodi=ug;
+	}
+	public String getPutIcon(){
+		return putIcon;
+	}
+	public void setPutIcon(String ic){
+		this.putIcon=ic;
 	}
 
 	public String vivod(String x , double y  ){

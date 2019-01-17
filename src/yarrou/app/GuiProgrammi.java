@@ -8,15 +8,20 @@ import java.awt.event.ActionListener;
 
 public class GuiProgrammi extends JFrame {
     private JButton sozProdCreateButton;
+    private JLabel opisanieProductaLabel;
+    public JLabel getOpisanieProductaLabel(){
+        return opisanieProductaLabel;
+    }
     String vivod_v_okno;
     private BazaDannix bazaDannix;
     private Obrabotka obrabotka;
+    protected JButton poiskButton;
+    public JButton getPoiskButton(){
+        return poiskButton;
+    }
     public GuiProgrammi() throws Exception {
         super("главное окно");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        BazaDannix bazaDannix= new BazaDannix();
-
-        bazaDannix.zagruzkaBazi();
 
 
 
@@ -27,6 +32,7 @@ public class GuiProgrammi extends JFrame {
         JLabel iskomiyProductLabel=new JLabel("искомый продукт");
         JTextField vvodTeksta=new JTextField(14);
         JButton poiskButton=new JButton("поиск");
+
         zaprosPanel.add(iskomiyProductLabel);
         zaprosPanel.add(vvodTeksta);
         zaprosPanel.add(poiskButton);

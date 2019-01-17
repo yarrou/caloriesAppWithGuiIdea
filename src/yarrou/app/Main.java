@@ -11,8 +11,8 @@ public class Main {
 
     public static void main(String[] args)throws Exception{
 
-    	GuiProgrammi glavnoeOkno=new GuiProgrammi();
-        glavnoeOkno.setVisible(true);
+    OsnovnoyProcess osnovnoyProcess = new OsnovnoyProcess();
+    osnovnoyProcess.osnProc();
     }
 }
 

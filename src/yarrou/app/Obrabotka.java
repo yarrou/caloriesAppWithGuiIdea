@@ -17,7 +17,7 @@ public class Obrabotka {
 		sootvetstvie=true;
 		int indeks = -1 ;
 		Iterator<Products> oneProduct = polu4enayaBazaDannix.iterator();
-		Products oneProductVerif = new Products(null,0,0,0,0);
+		Products oneProductVerif = new Products(null,0,0,0,0,null);
 		while(oneProduct.hasNext()){//прогоняем запрос по базе
 			oneProductVerif = oneProduct.next();
 			indeks++;
