@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class OknoProgrammiGui {
     private BazaDannix bazDanGui;
-    //private ExitDialog dialog;
+    //private yarrou.app.ExitDialog dialog;
     public void setBazDanGui(BazaDannix bdg){
         this.bazDanGui=bdg;
     }
