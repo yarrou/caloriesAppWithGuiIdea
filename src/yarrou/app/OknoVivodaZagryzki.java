@@ -11,6 +11,6 @@ public class OknoVivodaZagryzki extends JFrame {
         JPanel oknoVivodaZagruzkiPanel=new JPanel();
         oknoVivodaZagruzkiPanel.add(vivodItogaZagruzki);
         getContentPane().add(oknoVivodaZagruzkiPanel);
-        setSize(200,200);
+        setSize(200,100);
     }
 }
