@@ -5,6 +5,10 @@ import java.util.Iterator;
 
 public class Obrabotka {
 	private boolean sootvetstvie;
+	private String prIc;
+	public String getPrIc(){
+		return prIc;
+	}
 	public boolean getSootvetstvie(){
 		return sootvetstvie;
 	}
@@ -23,6 +27,7 @@ public class Obrabotka {
 			indeks++;
 			if(zapros.equals(oneProductVerif.getName())) {//если запрос соответствует элементу в базе
 				this.result=oneProductVerif.vivod(oneProductVerif.getName(), oneProductVerif.getEnergo());//выводим данные по запросу
+				this.prIc=oneProductVerif.getPutIcon();
 				sootvetstvie=false;//если найдено соответствие ,то меняем переменную
 				break;
 			}

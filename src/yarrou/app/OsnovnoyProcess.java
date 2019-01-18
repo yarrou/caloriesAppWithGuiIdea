@@ -12,5 +12,7 @@ public class OsnovnoyProcess {
         BazaDannix opBazaDannix =new BazaDannix();
         opBazaDannix.zagruzkaBazi();
         glavnoeOkno.setBazaDannix(opBazaDannix);
+        Obrabotka opObrabotka= new Obrabotka();
+        glavnoeOkno.setObrabotka(opObrabotka);
     }
 }

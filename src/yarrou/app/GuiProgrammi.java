@@ -18,6 +18,11 @@ public class GuiProgrammi extends JFrame {
         this.bazaDannix=bd;
     }
     private Obrabotka obrabotka;
+
+    public void setObrabotka( Obrabotka obrabot) {
+        this.obrabotka= obrabot;
+    }
+
     protected JButton poiskButton;
     public JButton getPoiskButton(){
         return poiskButton;
@@ -33,17 +38,17 @@ public class GuiProgrammi extends JFrame {
         JPanel poiskProductovPanel = new JPanel();//вкладка поиска продуктов
         JPanel zaprosPanel=new JPanel();//вкладка ввода запроса
         JLabel iskomiyProductLabel=new JLabel("искомый продукт");
-        JTextField vvodTeksta=new JTextField(14);
-        JButton poiskButton=new JButton("поиск");
+        JTextField vvodTeksta=new JTextField(14);//поле ввода запроса
+        JButton poiskButton=new JButton("поиск");//кнопка поиска
 
         zaprosPanel.add(iskomiyProductLabel);
         zaprosPanel.add(vvodTeksta);
         zaprosPanel.add(poiskButton);
         poiskProductovPanel.add(zaprosPanel, BorderLayout.NORTH);
-        JLabel iconProductLabel=new JLabel();
+        JLabel iconProductLabel=new JLabel();//вывод изображения продукта
         iconProductLabel.setPreferredSize(new Dimension(70,70));
         iconProductLabel.setBorder(BorderFactory.createLineBorder(Color.black));
-        JLabel opisanieProductaLabel=new JLabel();
+        JLabel opisanieProductaLabel=new JLabel();//вывод результата поиска
         opisanieProductaLabel.setPreferredSize(new Dimension(355,70));
         opisanieProductaLabel.setBorder(BorderFactory.createLineBorder(Color.black));
         JPanel vivodPanel=new JPanel();
@@ -56,7 +61,11 @@ public class GuiProgrammi extends JFrame {
         poiskButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                opisanieProductaLabel.setText(bazaDannix.getItogZagruzki());
+                obrabotka.obrabotkaDannix(vvodTeksta.getText(),bazaDannix.getEdaBaza());
+                opisanieProductaLabel.setText(obrabotka.getResult());
+                ImageIcon prodIcon = new ImageIcon(obrabotka.getPrIc());
+                iconProductLabel.setIcon(prodIcon);
+
             }
         });
 
