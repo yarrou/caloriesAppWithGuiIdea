@@ -14,6 +14,9 @@ public class GuiProgrammi extends JFrame {
     }
     String vivod_v_okno;
     private BazaDannix bazaDannix;
+    public void setBazaDannix(BazaDannix bd){
+        this.bazaDannix=bd;
+    }
     private Obrabotka obrabotka;
     protected JButton poiskButton;
     public JButton getPoiskButton(){
@@ -50,6 +53,12 @@ public class GuiProgrammi extends JFrame {
         vivodPanel.setBorder(new TitledBorder("вывод результата"));
         vivodPanel.setPreferredSize(new Dimension(450,200));
         poiskProductovPanel.add(vivodPanel, BorderLayout.CENTER);
+        poiskButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                opisanieProductaLabel.setText(bazaDannix.getItogZagruzki());
+            }
+        });
 
 
 

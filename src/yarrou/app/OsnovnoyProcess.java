@@ -9,13 +9,8 @@ public class OsnovnoyProcess {
     public  void osnProc () throws Exception{
         GuiProgrammi glavnoeOkno=new GuiProgrammi();
         glavnoeOkno.setVisible(true);
-        JLabel opOpisanieProductaLabel =glavnoeOkno.getOpisanieProductaLabel();
-        JButton opPoiskButton = glavnoeOkno.getPoiskButton();
-        opPoiskButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                opOpisanieProductaLabel.setText("привет");
-            }
-        });
+        BazaDannix opBazaDannix =new BazaDannix();
+        opBazaDannix.zagruzkaBazi();
+        glavnoeOkno.setBazaDannix(opBazaDannix);
     }
 }
