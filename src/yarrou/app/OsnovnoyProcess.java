@@ -14,5 +14,9 @@ public class OsnovnoyProcess {
         glavnoeOkno.setBazaDannix(opBazaDannix);
         Obrabotka opObrabotka= new Obrabotka();
         glavnoeOkno.setObrabotka(opObrabotka);
+        opBazaDannix.saveBaza(opBazaDannix.getPutFile(),opBazaDannix.getEdaBaza());
+        DobavlenieNovogoProducta dobNewProduct=new DobavlenieNovogoProducta();
+        dobNewProduct.setBazaDannihNew(opBazaDannix.getEdaBaza());
+        glavnoeOkno.setDobNewProdGui(dobNewProduct);
     }
 }

@@ -31,6 +31,9 @@ public class Obrabotka {
 				sootvetstvie=false;//если найдено соответствие ,то меняем переменную
 				break;
 			}
+			else {
+				this.prIc="yarrouappCaloriiWithGui/grafics/gui/question.jpeg";
+			}
 		}
 		if(sootvetstvie){//если переменная не изменена ,то выводим отрицательный результат
 			this.result="не найдено соответствий";

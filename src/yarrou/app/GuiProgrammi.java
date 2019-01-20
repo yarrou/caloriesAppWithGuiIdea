@@ -12,7 +12,11 @@ public class GuiProgrammi extends JFrame {
     public JLabel getOpisanieProductaLabel(){
         return opisanieProductaLabel;
     }
-    String vivod_v_okno;
+    String viborFileIcon;
+    private DobavlenieNovogoProducta dobNewProdGui;
+    public void setDobNewProdGui(DobavlenieNovogoProducta dnpg){
+        this.dobNewProdGui=dnpg;
+    }
     private BazaDannix bazaDannix;
     public void setBazaDannix(BazaDannix bd){
         this.bazaDannix=bd;
@@ -29,6 +33,7 @@ public class GuiProgrammi extends JFrame {
     }
     public GuiProgrammi() throws Exception {
         super("главное окно");
+        viborFileIcon="yarrouappCaloriiWithGui/grafics/gui/food.jpg";
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
@@ -46,7 +51,7 @@ public class GuiProgrammi extends JFrame {
         zaprosPanel.add(poiskButton);
         poiskProductovPanel.add(zaprosPanel, BorderLayout.NORTH);
         JLabel iconProductLabel=new JLabel();//вывод изображения продукта
-        iconProductLabel.setPreferredSize(new Dimension(70,70));
+        iconProductLabel.setPreferredSize(new Dimension(70,70));//размер изображения продукта
         iconProductLabel.setBorder(BorderFactory.createLineBorder(Color.black));
         JLabel opisanieProductaLabel=new JLabel();//вывод результата поиска
         opisanieProductaLabel.setPreferredSize(new Dimension(355,70));
@@ -79,9 +84,9 @@ public class GuiProgrammi extends JFrame {
         sozProdNameLabel.setLocation(20,7);
         //sozProdNameLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
         //sozProdNameLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        JTextField sozProdNameTextfield = new JTextField(14);
+        JTextField sozProdNameTextfield = new JTextField(14);//ввод названия нового продукта
         //sozProdNameTextfield.setLocation(70,7);
-        JPanel sozProdNamePanel = new JPanel();
+        JPanel sozProdNamePanel = new JPanel();//панель для названия нового продукта
         sozProdNamePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         sozProdNamePanel.setPreferredSize(new Dimension(450,40));
         //sozProdNamePanel.setLayout(null);
@@ -116,15 +121,6 @@ public class GuiProgrammi extends JFrame {
         sozProdUglevodiPanel.add(sozProdUglevodiLabel);
         sozProdUglevodiPanel.add(sozProdUglevodiTextfield);
 
-
-        JButton sozProdCreateButton = new JButton("добавить");
-        sozProdCreateButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent event) {
-                JOptionPane.showMessageDialog(sozProdCreateButton, vivod_v_okno, "Информация", JOptionPane.WARNING_MESSAGE);
-            }
-
-        });
         JButton viborImageProd = new JButton("выберите изображение");
         viborImageProd.addActionListener(new ActionListener() {
             @Override
@@ -132,10 +128,22 @@ public class GuiProgrammi extends JFrame {
                 JFileChooser fileImageProd = new JFileChooser();
                 int ret = fileImageProd.showDialog(null,"выбрать файл");
                 if (ret == JFileChooser.APPROVE_OPTION){
-                    vivod_v_okno=fileImageProd.getName();
+                    viborFileIcon=fileImageProd.getName();
                 }
             }
         });
+
+
+        JButton sozProdCreateButton = new JButton("добавить");//кнопка добавления нового продукта
+        sozProdCreateButton.addActionListener(new ActionListener() {//метод добавления нового продукта
+
+            public void actionPerformed(ActionEvent event) {
+                dobNewProdGui.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
+                JOptionPane.showMessageDialog(sozProdCreateButton, viborFileIcon, "Информация", JOptionPane.WARNING_MESSAGE);
+            }
+
+        });
+
         JPanel panelFinal = new JPanel();
         panelFinal.add(viborImageProd);
         panelFinal.add(sozProdCreateButton);
