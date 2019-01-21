@@ -5,6 +5,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class GuiProgrammi extends JFrame {
     private JButton sozProdCreateButton;
@@ -131,7 +132,13 @@ public class GuiProgrammi extends JFrame {
                     String viborIshodnogoFileIcon=fileImageProd.getName();//переменная пути к выбранному файлу
                     viborFileIcon="yarrouappCaloriiWithGui/grafics/products/"+sozProdNameTextfield.getText()+".jpg";//переменная пути к файлу-копии
                     KopirovanieFiles kopiFile=new KopirovanieFiles();//копированин файлов
-                    kopiFile.kopirovanie(viborIshodnogoFileIcon,viborFileIcon);
+                    try {
+                        kopiFile.kopirovanie(viborIshodnogoFileIcon, viborFileIcon);
+                    }
+                    catch (IOException e){
+                        System.out.println("error");
+
+                    }
                 }
             }
         });

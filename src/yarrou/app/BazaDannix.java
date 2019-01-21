@@ -29,7 +29,10 @@ public class BazaDannix {
 
 	public void saveBaza(String filePutsave,ArrayList<Products> bazaSaverProducts){
 		try {//при выходе из программы записываем базу в файл
+			System.out.println("приступаем к сохранениюю");
+			System.out.println("сохранять будем по пути"+ filePutsave);
 			Formatter bazaSaver = new Formatter(filePutsave);//создаем файл по обнаруженному пути
+			System.out.println("создан файл базы");
 			Iterator<Products> bazaSaverIt = bazaSaverProducts.iterator();//для каждого элемента в базе
 			while (bazaSaverIt.hasNext()){
 				Products productBazaSaver = bazaSaverIt.next();
