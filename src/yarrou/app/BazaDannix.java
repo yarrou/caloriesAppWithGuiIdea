@@ -34,7 +34,7 @@ public class BazaDannix {
 			while (bazaSaverIt.hasNext()){
 				Products productBazaSaver = bazaSaverIt.next();
 				System.out.println("сохраняем данные продукта " +productBazaSaver.getName());
-				bazaSaver.format("%s %s %s %s %s",productBazaSaver.getName(),productBazaSaver.getEnergo(),productBazaSaver.getBelki(),productBazaSaver.getJiri(),productBazaSaver.getUglevodi());//записываем в файл данные продукта
+				bazaSaver.format("%s %s %s %s %s %s",productBazaSaver.getName(),productBazaSaver.getEnergo(),productBazaSaver.getBelki(),productBazaSaver.getJiri(),productBazaSaver.getUglevodi(),productBazaSaver.getPutIcon());//записываем в файл данные продукта
 				if (bazaSaverIt.hasNext()){//если есть следующий продукт
 					bazaSaver.format("%s","\r\n");//добавляем переход на новую строку
 				}
@@ -51,7 +51,7 @@ public class BazaDannix {
 	public void zagruzkaBazi() throws Exception {
 		ArrayList <Products> edaBazaProcess= new ArrayList();
 		ArrayList <String> put_k_baze = new ArrayList();//создаем список путей к файлу с данными
-		put_k_baze.add("yarrouapp/baza.txt");//по умолчанию
+		put_k_baze.add("yarrouappCaloriiWithGui/baza/baza.txt");//по умолчанию
 		put_k_baze.add("hjhstorage/emulated/0/yarrouapp/baza.txt");//для андроид
 		put_k_baze.add("C:/yarrouapp/baza.txt");//для виндовс
 		put_k_baze.add("/sdcard/yarrouapp/baza.txt");
@@ -87,6 +87,7 @@ public class BazaDannix {
 			Products kuraga = new Products("курага",215.0,3.4,0.5,63.0,"yarrouappCaloriiWithGui/grafics/products/курага.jpeg");
 			edaBazaProcess.add(izum);
 			edaBazaProcess.add(kuraga);
+			putFile="yarrouappCaloriiWithGui/baza/baza.txt";
 		}
 		OknoDialogaZagruzki odz =new OknoDialogaZagruzki(itogZagruzki);
 		odz.setVisible(true);

@@ -121,14 +121,17 @@ public class GuiProgrammi extends JFrame {
         sozProdUglevodiPanel.add(sozProdUglevodiLabel);
         sozProdUglevodiPanel.add(sozProdUglevodiTextfield);
 
-        JButton viborImageProd = new JButton("выберите изображение");
+        JButton viborImageProd = new JButton("выберите изображение");//кнопка для выбора изображения нового продукта
         viborImageProd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JFileChooser fileImageProd = new JFileChooser();
                 int ret = fileImageProd.showDialog(null,"выбрать файл");
                 if (ret == JFileChooser.APPROVE_OPTION){
-                    viborFileIcon=fileImageProd.getName();
+                    String viborIshodnogoFileIcon=fileImageProd.getName();//переменная пути к выбранному файлу
+                    viborFileIcon="yarrouappCaloriiWithGui/grafics/products/"+sozProdNameTextfield.getText()+".jpg";//переменная пути к файлу-копии
+                    KopirovanieFiles kopiFile=new KopirovanieFiles();//копированин файлов
+                    kopiFile.kopirovanie(viborIshodnogoFileIcon,viborFileIcon);
                 }
             }
         });
@@ -139,7 +142,7 @@ public class GuiProgrammi extends JFrame {
 
             public void actionPerformed(ActionEvent event) {
                 dobNewProdGui.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
-                JOptionPane.showMessageDialog(sozProdCreateButton, viborFileIcon, "Информация", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(sozProdCreateButton, "продукт успешно добавлен", "Информация", JOptionPane.WARNING_MESSAGE);
             }
 
         });
