@@ -7,7 +7,9 @@ import static java.nio.file.Files.copy;
 
 public class KopirovanieFiles {
 
-    public  void kopirovanie(File source, File dest) throws IOException {
-        copy(source.toPath(), dest.toPath());
+    public  void kopirovanie(String source, String dest) throws IOException {
+        File sourceFile=new File(source);
+        File destFile=new File(dest);
+        copy(sourceFile.toPath(), destFile.toPath());
     }
 }
