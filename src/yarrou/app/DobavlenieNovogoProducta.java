@@ -8,6 +8,10 @@ public class DobavlenieNovogoProducta {
     public void setBazaDannihNew(ArrayList<Products> bdnp){
         this.bazaDannihNew=bdnp;
     }
+    public  ArrayList<Products> getBazaDannihNew(){
+        final ArrayList<Products> bazaDannihNew = this.bazaDannihNew;
+        return bazaDannihNew;
+    }
     private String itogAddNewProduct;
     public String getItogAddNewProduct(){
         return itogAddNewProduct;

@@ -149,6 +149,7 @@ public class GuiProgrammi extends JFrame {
 
             public void actionPerformed(ActionEvent event) {
                 dobNewProdGui.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
+                bazaDannix.setEdaBaza(dobNewProdGui.getBazaDannihNew());
                 JOptionPane.showMessageDialog(sozProdCreateButton, "продукт успешно добавлен", "Информация", JOptionPane.WARNING_MESSAGE);
             }
 

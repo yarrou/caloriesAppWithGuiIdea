@@ -15,6 +15,9 @@ public class BazaDannix {
 	public ArrayList getEdaBaza(){
 		return edaBaza;
 	}
+	public void setEdaBaza(ArrayList<Products> seb){
+		this.edaBaza=seb;
+	}
 	public String getItogZagruzki(){
 		return itogZagruzki;
 	}
