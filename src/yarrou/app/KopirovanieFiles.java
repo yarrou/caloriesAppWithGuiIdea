@@ -7,9 +7,14 @@ import static java.nio.file.Files.copy;
 
 public class KopirovanieFiles {
 
-    public  void kopirovanie(String source, String dest) throws IOException {
-        File sourceFile=new File(source);
-        File destFile=new File(dest);
-        copy(sourceFile.toPath(), destFile.toPath());
+
+    public  void kopirovanie(File source, File dest) {
+        try {
+            copy(source.toPath(), dest.toPath());
+            System.out.println("файл успешно скопирован");
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

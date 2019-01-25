@@ -5,7 +5,11 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GuiProgrammi extends JFrame {
     private JButton sozProdCreateButton;
@@ -15,27 +19,36 @@ public class GuiProgrammi extends JFrame {
     }
     String viborFileIcon;
     private DobavlenieNovogoProducta dobNewProdGui;
-    public void setDobNewProdGui(DobavlenieNovogoProducta dnpg){
+    void setDobNewProdGui(DobavlenieNovogoProducta dnpg){
         this.dobNewProdGui=dnpg;
     }
-    private BazaDannix bazaDannix;
-    public void setBazaDannix(BazaDannix bd){
-        this.bazaDannix=bd;
-    }
-    private Obrabotka obrabotka;
 
-    public void setObrabotka( Obrabotka obrabot) {
-        this.obrabotka= obrabot;
+
+
+    void setBazaProducts(ArrayList<Products> bazaProducts) {
+        this.bazaProducts = bazaProducts;
+    }
+    private ArrayList<Products> bazaProducts;
+
+
+    private String putBazaSave;
+
+    public String getPutBazaSave() {
+        return putBazaSave;
     }
 
-    protected JButton poiskButton;
-    public JButton getPoiskButton(){
-        return poiskButton;
+    public void setPutBazaSave(String putBazaSave) {
+        this.putBazaSave = putBazaSave;
     }
-    public GuiProgrammi() throws Exception {
+
+    GuiProgrammi() throws Exception {
+
         super("главное окно");
         viborFileIcon="yarrouappCaloriiWithGui/grafics/gui/food.jpg";
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        ImageIcon iconProgram = new ImageIcon("yarrouappCaloriiWithGui/grafics/gui/caloriiIcon.png");
+        setIconImage(iconProgram.getImage());
+
 
 
 
@@ -45,7 +58,7 @@ public class GuiProgrammi extends JFrame {
         JPanel zaprosPanel=new JPanel();//вкладка ввода запроса
         JLabel iskomiyProductLabel=new JLabel("искомый продукт");
         JTextField vvodTeksta=new JTextField(14);//поле ввода запроса
-        JButton poiskButton=new JButton("поиск");//кнопка поиска
+        JButton poiskButton=new JButton("поиск",new ImageIcon("yarrouappCaloriiWithGui/grafics/gui/poisk.png"));//кнопка поиска
 
         zaprosPanel.add(iskomiyProductLabel);
         zaprosPanel.add(vvodTeksta);
@@ -67,7 +80,8 @@ public class GuiProgrammi extends JFrame {
         poiskButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                obrabotka.obrabotkaDannix(vvodTeksta.getText(),bazaDannix.getEdaBaza());
+                Obrabotka obrabotka=new Obrabotka();
+                obrabotka.obrabotkaDannix(vvodTeksta.getText(),bazaProducts);
                 opisanieProductaLabel.setText(obrabotka.getResult());
                 ImageIcon prodIcon = new ImageIcon(obrabotka.getPrIc());
                 iconProductLabel.setIcon(prodIcon);
@@ -80,17 +94,12 @@ public class GuiProgrammi extends JFrame {
         panelVkladok.add("поиск",poiskProductovPanel);
 
         JPanel sozdanieProductovPanel=new JPanel();
-        //sozdanieProductovPanel.setLayout(new FlowLayout());
         JLabel sozProdNameLabel = new JLabel("название");
         sozProdNameLabel.setLocation(20,7);
-        //sozProdNameLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
-        //sozProdNameLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         JTextField sozProdNameTextfield = new JTextField(14);//ввод названия нового продукта
-        //sozProdNameTextfield.setLocation(70,7);
         JPanel sozProdNamePanel = new JPanel();//панель для названия нового продукта
         sozProdNamePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         sozProdNamePanel.setPreferredSize(new Dimension(450,40));
-        //sozProdNamePanel.setLayout(null);
         sozProdNamePanel.add(sozProdNameLabel);
         sozProdNamePanel.add(sozProdNameTextfield);
         JLabel sozProdCaloriiLabel = new JLabel("калорийность");
@@ -127,18 +136,19 @@ public class GuiProgrammi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JFileChooser fileImageProd = new JFileChooser();
-                int ret = fileImageProd.showDialog(null,"выбрать файл");
+                int ret = fileImageProd.showDialog(null,"выберите изображение");
                 if (ret == JFileChooser.APPROVE_OPTION){
-                    String viborIshodnogoFileIcon=fileImageProd.getName();//переменная пути к выбранному файлу
-                    viborFileIcon="yarrouappCaloriiWithGui/grafics/products/"+sozProdNameTextfield.getText()+".jpg";//переменная пути к файлу-копии
+                    File fileChooser = fileImageProd.getSelectedFile();
+                    String viborIshodnogoFileIcon=fileChooser.getName();//переменная пути к выбранному файлу
+                    System.out.println(viborIshodnogoFileIcon);
+                    String viborFileIconGui="yarrouappCaloriiWithGui/grafics/products/"+sozProdNameTextfield.getText()+".jpg";//переменная пути к файлу-копии
+                    File copyFile= new File(viborFileIconGui);
+                    System.out.println(viborFileIconGui);
                     KopirovanieFiles kopiFile=new KopirovanieFiles();//копированин файлов
-                    try {
-                        kopiFile.kopirovanie(viborIshodnogoFileIcon, viborFileIcon);
-                    }
-                    catch (IOException e){
-                        System.out.println("error");
+                    kopiFile.kopirovanie(fileChooser,copyFile);
 
-                    }
+
+
                 }
             }
         });
@@ -148,8 +158,10 @@ public class GuiProgrammi extends JFrame {
         sozProdCreateButton.addActionListener(new ActionListener() {//метод добавления нового продукта
 
             public void actionPerformed(ActionEvent event) {
-                dobNewProdGui.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
-                bazaDannix.setEdaBaza(dobNewProdGui.getBazaDannihNew());
+                dobNewProdGui.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),
+                        sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
+                BazaDannixSave bazaDannixSave= new BazaDannixSave();
+                bazaDannixSave.saveBaza(putBazaSave,dobNewProdGui.getBazaDannihNew());
                 JOptionPane.showMessageDialog(sozProdCreateButton, "продукт успешно добавлен", "Информация", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -170,6 +182,11 @@ public class GuiProgrammi extends JFrame {
 
         panelVkladok.add("создание",sozProdBox);
         getContentPane().add(panelVkladok);
-        setSize(450,300);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//вычисляем размер экрана
+        int sizeWidth = 450;//ширина окна программы
+        int sizeHeight = 300;//высота окна программы
+        int locationX = (screenSize.width - sizeWidth) / 2;
+        int locationY = (screenSize.height - sizeHeight) / 2;
+        setBounds(locationX, locationY, sizeWidth, sizeHeight);//присваиваем окну программы размер и положение относительно центра экрана
     }
 }

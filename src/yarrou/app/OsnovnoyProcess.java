@@ -9,14 +9,12 @@ public class OsnovnoyProcess {
     public  void osnProc () throws Exception{
         GuiProgrammi glavnoeOkno=new GuiProgrammi();//создаем интерфейс программы
         glavnoeOkno.setVisible(true);
-        BazaDannix opBazaDannix =new BazaDannix();
+        BazaDannixLoad opBazaDannix =new BazaDannixLoad();
         opBazaDannix.zagruzkaBazi();//загружаем базу данных
-        glavnoeOkno.setBazaDannix(opBazaDannix);//прередаем загруженную базу gui
-        Obrabotka opObrabotka= new Obrabotka();
-        glavnoeOkno.setObrabotka(opObrabotka);
+        glavnoeOkno.setBazaProducts(opBazaDannix.getEdaBaza());
+        glavnoeOkno.setPutBazaSave(opBazaDannix.getPutFile());
         DobavlenieNovogoProducta dobNewProduct=new DobavlenieNovogoProducta();
         dobNewProduct.setBazaDannihNew(opBazaDannix.getEdaBaza());
         glavnoeOkno.setDobNewProdGui(dobNewProduct);
-        opBazaDannix.saveBaza(opBazaDannix.getPutFile(),opBazaDannix.getEdaBaza());
     }
 }

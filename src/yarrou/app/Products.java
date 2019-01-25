@@ -55,6 +55,6 @@ public class Products {
 	}
 
 	public String vivod(String x , double y  ){
-		String fraza=("енергетическая ценность 100 грамм продукта "+ x +"\n"+" равна "+ y + " килокалорий");
+		String fraza=("калорийность "+ x +"\n"+" равна "+ y + " килокалорий");
 	return fraza;
 }}

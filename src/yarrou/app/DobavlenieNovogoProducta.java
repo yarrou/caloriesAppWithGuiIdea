@@ -5,18 +5,18 @@ import java.util.Iterator;
 
 public class DobavlenieNovogoProducta {
     private ArrayList<Products> bazaDannihNew;
-    public void setBazaDannihNew(ArrayList<Products> bdnp){
+    void setBazaDannihNew(ArrayList<Products> bdnp){
         this.bazaDannihNew=bdnp;
     }
-    public  ArrayList<Products> getBazaDannihNew(){
-        final ArrayList<Products> bazaDannihNew = this.bazaDannihNew;
+    ArrayList<Products> getBazaDannihNew(){
+        //final ArrayList<Products> bazaDannihNew = this.bazaDannihNew;
         return bazaDannihNew;
     }
     private String itogAddNewProduct;
     public String getItogAddNewProduct(){
         return itogAddNewProduct;
     }
-    public void dobavlyemProduct(String nameNewProduct,String energoNewProduct,String belkiNewProduct,String jiriNewProduct,String uglevodiNewProduct,String putIconNewProduct){
+    void dobavlyemProduct(String nameNewProduct,String energoNewProduct,String belkiNewProduct,String jiriNewProduct,String uglevodiNewProduct,String putIconNewProduct){
         double energod=Double.parseDouble(energoNewProduct);
         double belkid=Double.parseDouble(belkiNewProduct);
         double jirid=Double.parseDouble(jiriNewProduct);
@@ -33,7 +33,7 @@ public class DobavlenieNovogoProducta {
             }
         }
         if (productNewInBaza){
-            bazaDannihNew.add(addNewProducts);
+            this.bazaDannihNew.add(addNewProducts);
             itogAddNewProduct="продукт успешно добавлен";
         }
     }
