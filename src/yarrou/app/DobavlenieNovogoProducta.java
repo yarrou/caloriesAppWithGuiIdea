@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class DobavlenieNovogoProducta {
-    private ArrayList<Products> bazaDannihNew;
 
 
     public boolean getDobavlenieItog() {
@@ -13,16 +12,21 @@ public class DobavlenieNovogoProducta {
     private boolean dobavlenieItog;
 
 
+    private ArrayList<Products> bazaDannihNew;
     void setBazaDannihNew(ArrayList<Products> bdnp){
         this.bazaDannihNew=bdnp;
     }
     ArrayList<Products> getBazaDannihNew(){
         return bazaDannihNew;
     }
+
+
     private String itogAddNewProduct;
     public String getItogAddNewProduct(){
         return itogAddNewProduct;
     }
+
+
     void dobavlyemProduct(String nameNewProduct,String energoNewProduct,String belkiNewProduct,String jiriNewProduct,String uglevodiNewProduct,String putIconNewProduct){
         this.dobavlenieItog=true;
         try{

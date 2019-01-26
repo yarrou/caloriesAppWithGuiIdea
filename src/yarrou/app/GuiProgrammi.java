@@ -32,21 +32,20 @@ public class GuiProgrammi extends JFrame {
 
 
     private String putBazaSave;
-
     public String getPutBazaSave() {
         return putBazaSave;
     }
 
-    public void setPutBazaSave(String putBazaSave) {
+    void setPutBazaSave(String putBazaSave) {
         this.putBazaSave = putBazaSave;
     }
 
     GuiProgrammi() throws Exception {
 
         super("Калорийность продуктов");
-        viborFileIcon="yarrouappCaloriiWithGui/grafics/gui/food.jpg";
+        viborFileIcon="yarrouappCaloriiWithGui/grafics/gui/food.jpg";//картинка по умолчанию для нового продукта
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        ImageIcon iconProgram = new ImageIcon("yarrouappCaloriiWithGui/grafics/gui/caloriiIcon.png");
+        ImageIcon iconProgram = new ImageIcon("yarrouappCaloriiWithGui/grafics/gui/caloriiIcon.png");//иконка программы
         setIconImage(iconProgram.getImage());
 
 
@@ -77,7 +76,8 @@ public class GuiProgrammi extends JFrame {
         vivodPanel.setBorder(new TitledBorder("вывод результата"));
         vivodPanel.setPreferredSize(new Dimension(450,200));
         poiskProductovPanel.add(vivodPanel, BorderLayout.CENTER);
-        poiskButton.addActionListener(new ActionListener() {
+
+        poiskButton.addActionListener(new ActionListener() {//добавляем метод поиска к кнопке поиска
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Obrabotka obrabotka=new Obrabotka();
@@ -139,11 +139,11 @@ public class GuiProgrammi extends JFrame {
                 int ret = fileImageProd.showDialog(null,"выберите изображение");
                 if (ret == JFileChooser.APPROVE_OPTION){
                     File fileChooser = fileImageProd.getSelectedFile();
-                    String viborIshodnogoFileIcon=fileChooser.getName();//переменная пути к выбранному файлу
-                    System.out.println(viborIshodnogoFileIcon);
-                    String viborFileIconGui="yarrouappCaloriiWithGui/grafics/products/"+sozProdNameTextfield.getText()+".jpg";//переменная пути к файлу-копии
-                    File copyFile= new File(viborFileIconGui);
-                    System.out.println(viborFileIconGui);
+                    //String viborIshodnogoFileIcon=fileChooser.getName();//переменная пути к выбранному файлу
+                    //System.out.println(viborIshodnogoFileIcon);
+                    viborFileIcon="yarrouappCaloriiWithGui/grafics/products/"+sozProdNameTextfield.getText()+".jpg";//переменная пути к файлу-копии
+                    File copyFile= new File(viborFileIcon);
+                    System.out.println(viborFileIcon);
                     KopirovanieFiles kopiFile=new KopirovanieFiles();//копированин файлов
                     kopiFile.kopirovanie(fileChooser,copyFile);
 
