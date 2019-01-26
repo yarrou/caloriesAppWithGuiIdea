@@ -43,7 +43,7 @@ public class GuiProgrammi extends JFrame {
 
     GuiProgrammi() throws Exception {
 
-        super("главное окно");
+        super("Калорийность продуктов");
         viborFileIcon="yarrouappCaloriiWithGui/grafics/gui/food.jpg";
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         ImageIcon iconProgram = new ImageIcon("yarrouappCaloriiWithGui/grafics/gui/caloriiIcon.png");
@@ -162,7 +162,10 @@ public class GuiProgrammi extends JFrame {
                         sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
                 BazaDannixSave bazaDannixSave= new BazaDannixSave();
                 bazaDannixSave.saveBaza(putBazaSave,dobNewProdGui.getBazaDannihNew());
-                JOptionPane.showMessageDialog(sozProdCreateButton, "продукт успешно добавлен", "Информация", JOptionPane.WARNING_MESSAGE);
+                if (dobNewProdGui.getDobavlenieItog()){
+                    JOptionPane.showMessageDialog(sozProdCreateButton, "продукт успешно добавлен", "Информация", JOptionPane.WARNING_MESSAGE);
+                }
+
             }
 
         });

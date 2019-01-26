@@ -5,11 +5,18 @@ import java.util.Iterator;
 
 public class DobavlenieNovogoProducta {
     private ArrayList<Products> bazaDannihNew;
+
+
+    public boolean getDobavlenieItog() {
+        return dobavlenieItog;
+    }
+    private boolean dobavlenieItog;
+
+
     void setBazaDannihNew(ArrayList<Products> bdnp){
         this.bazaDannihNew=bdnp;
     }
     ArrayList<Products> getBazaDannihNew(){
-        //final ArrayList<Products> bazaDannihNew = this.bazaDannihNew;
         return bazaDannihNew;
     }
     private String itogAddNewProduct;
@@ -17,6 +24,8 @@ public class DobavlenieNovogoProducta {
         return itogAddNewProduct;
     }
     void dobavlyemProduct(String nameNewProduct,String energoNewProduct,String belkiNewProduct,String jiriNewProduct,String uglevodiNewProduct,String putIconNewProduct){
+        this.dobavlenieItog=true;
+        try{
         double energod=Double.parseDouble(energoNewProduct);
         double belkid=Double.parseDouble(belkiNewProduct);
         double jirid=Double.parseDouble(jiriNewProduct);
@@ -35,6 +44,12 @@ public class DobavlenieNovogoProducta {
         if (productNewInBaza){
             this.bazaDannihNew.add(addNewProducts);
             itogAddNewProduct="продукт успешно добавлен";
+        }}
+        catch (NumberFormatException e){
+            dobavlenieItog=false;
+            VivodDialogaOshibkiDobavleniyaProducta denp= new VivodDialogaOshibkiDobavleniyaProducta();
+            denp.setVisible(false);
+
         }
     }
 }
