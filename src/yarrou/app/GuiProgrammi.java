@@ -53,6 +53,11 @@ public class GuiProgrammi extends JFrame {
 
 
         JTabbedPane panelVkladok = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+
+
+
+
+
         JPanel poiskProductovPanel = new JPanel();//вкладка поиска продуктов
         JPanel zaprosPanel=new JPanel();//вкладка ввода запроса
         JLabel iskomiyProductLabel=new JLabel("искомый продукт");
@@ -91,7 +96,10 @@ public class GuiProgrammi extends JFrame {
 
 
 
-        panelVkladok.add("поиск",poiskProductovPanel);
+
+
+
+
 
         JPanel sozdanieProductovPanel=new JPanel();
         JLabel sozProdNameLabel = new JLabel("название");
@@ -161,7 +169,11 @@ public class GuiProgrammi extends JFrame {
                 dobNewProdGui.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),
                         sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
                 BazaDannixSave bazaDannixSave= new BazaDannixSave();
-                bazaDannixSave.saveBaza(putBazaSave,dobNewProdGui.getBazaDannihNew());
+                try {
+                    bazaDannixSave.saveBaza(putBazaSave,dobNewProdGui.getBazaDannihNew());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 if (dobNewProdGui.getDobavlenieItog()){
                     JOptionPane.showMessageDialog(sozProdCreateButton, "продукт успешно добавлен", "Информация", JOptionPane.WARNING_MESSAGE);
                 }
@@ -183,7 +195,19 @@ public class GuiProgrammi extends JFrame {
         sozProdBox.add(panelFinal);
 
 
+
+
+
+
+
+
+
+
+        panelVkladok.add("поиск",poiskProductovPanel);
         panelVkladok.add("создание",sozProdBox);
+
+
+
         getContentPane().add(panelVkladok);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();//вычисляем размер экрана
         int sizeWidth = 450;//ширина окна программы

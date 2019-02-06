@@ -11,8 +11,8 @@ public class OsnovnoyProcess {
         glavnoeOkno.setVisible(true);
         BazaDannixLoad opBazaDannix =new BazaDannixLoad();
         opBazaDannix.zagruzkaBazi();//загружаем базу данных
-        glavnoeOkno.setBazaProducts(opBazaDannix.getEdaBaza());
-        glavnoeOkno.setPutBazaSave(opBazaDannix.getPutFile());
+        glavnoeOkno.setBazaProducts(opBazaDannix.getEdaBaza());//передаем полученную базу окну интерфейса
+        glavnoeOkno.setPutBazaSave(opBazaDannix.getPutFile());//передаем окну интерфейса путь сохранения базы
         DobavlenieNovogoProducta dobNewProduct=new DobavlenieNovogoProducta();
         dobNewProduct.setBazaDannihNew(opBazaDannix.getEdaBaza());
         glavnoeOkno.setDobNewProdGui(dobNewProduct);
