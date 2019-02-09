@@ -2,6 +2,7 @@ package yarrou.app;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.html.FormView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GuiProgrammi extends JFrame {
     private JButton sozProdCreateButton;
@@ -200,11 +202,38 @@ public class GuiProgrammi extends JFrame {
 
 
 
+        Box obzorVsechProductov = Box.createVerticalBox();
+        Box spisokProductovPanel=Box.createVerticalBox();
+        JPanel spisokProductovButtonPanel= new JPanel();
+        spisokProductovButtonPanel.setPreferredSize(new Dimension(450,40));
+        JScrollPane spisokProductovScroll=new JScrollPane(spisokProductovPanel);
+        JButton obnovlenie = new JButton("обновить");
+        obnovlenie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                spisokProductovPanel.removeAll();
+                int indexSpisok=0;
+                System.out.println(bazaProducts.size());
+                while (indexSpisok<bazaProducts.size()){
+                    System.out.println((bazaProducts.get(indexSpisok)).getName());
+                    JLabel spisokProductovLabel = new JLabel((bazaProducts.get(indexSpisok)).getName());
+                    spisokProductovLabel.setPreferredSize(new Dimension(400,40));
+                    spisokProductovPanel.add(spisokProductovLabel);
+                    indexSpisok++;
+                }
+                spisokProductovScroll.revalidate();
+            }
+        });
+        spisokProductovButtonPanel.add(obnovlenie);
+        obzorVsechProductov.add(spisokProductovScroll);
+        obzorVsechProductov.add(spisokProductovButtonPanel);
 
 
 
+        //добавляем вкладки
         panelVkladok.add("поиск",poiskProductovPanel);
         panelVkladok.add("создание",sozProdBox);
+        panelVkladok.add("обзор",obzorVsechProductov);
 
 
 
