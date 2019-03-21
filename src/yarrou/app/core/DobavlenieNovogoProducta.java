@@ -1,4 +1,6 @@
-package yarrou.app;
+package yarrou.app.core;
+
+import yarrou.app.gui.VivodDialogaOshibkiDobavleniyaProducta;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,7 +18,7 @@ public class DobavlenieNovogoProducta {
     void setBazaDannihNew(ArrayList<Products> bdnp){
         this.bazaDannihNew=bdnp;
     }
-    ArrayList<Products> getBazaDannihNew(){
+    public ArrayList<Products> getBazaDannihNew(){
         return bazaDannihNew;
     }
 
@@ -27,7 +29,7 @@ public class DobavlenieNovogoProducta {
     }
 
 
-    void dobavlyemProduct(String nameNewProduct,String energoNewProduct,String belkiNewProduct,String jiriNewProduct,String uglevodiNewProduct,String putIconNewProduct){
+    public void dobavlyemProduct(String nameNewProduct, String energoNewProduct, String belkiNewProduct, String jiriNewProduct, String uglevodiNewProduct, String putIconNewProduct){
         this.dobavlenieItog=true;
         try{
         double energod=Double.parseDouble(energoNewProduct);

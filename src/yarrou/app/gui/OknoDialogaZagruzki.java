@@ -1,10 +1,10 @@
-package yarrou.app;
+package yarrou.app.gui;
 
 import javax.swing.*;
 
-class OknoDialogaZagruzki extends JFrame {
+public class OknoDialogaZagruzki extends JFrame {
     private String dialogVivodaZagruzki;
-    OknoDialogaZagruzki(String dvz){
+    public OknoDialogaZagruzki(String dvz){
         this.dialogVivodaZagruzki=dvz;
         JOptionPane.showMessageDialog(null, dialogVivodaZagruzki, "Загрузка базы", JOptionPane.WARNING_MESSAGE);
 

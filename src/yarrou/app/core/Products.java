@@ -1,4 +1,4 @@
-package yarrou.app;
+package yarrou.app.core;
 
 public class Products {
 	private String name;

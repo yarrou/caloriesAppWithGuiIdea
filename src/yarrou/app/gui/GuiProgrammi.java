@@ -1,17 +1,19 @@
-package yarrou.app;
+package yarrou.app.gui;
+
+import yarrou.app.bazaDannich.BazaDannixSave;
+import yarrou.app.core.DobavlenieNovogoProducta;
+import yarrou.app.core.KopirovanieFiles;
+import yarrou.app.core.Obrabotka;
+import yarrou.app.core.Products;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.html.FormView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class GuiProgrammi extends JFrame {
     private JButton sozProdCreateButton;
@@ -21,13 +23,13 @@ public class GuiProgrammi extends JFrame {
     }
     String viborFileIcon;
     private DobavlenieNovogoProducta dobNewProdGui;
-    void setDobNewProdGui(DobavlenieNovogoProducta dnpg){
+    public void setDobNewProdGui(DobavlenieNovogoProducta dnpg){
         this.dobNewProdGui=dnpg;
     }
 
 
 
-    void setBazaProducts(ArrayList<Products> bazaProducts) {
+    public void setBazaProducts(ArrayList<Products> bazaProducts) {
         this.bazaProducts = bazaProducts;
     }
     private ArrayList<Products> bazaProducts;
@@ -38,11 +40,11 @@ public class GuiProgrammi extends JFrame {
         return putBazaSave;
     }
 
-    void setPutBazaSave(String putBazaSave) {
+    public void setPutBazaSave(String putBazaSave) {
         this.putBazaSave = putBazaSave;
     }
 
-    GuiProgrammi() throws Exception {
+    public GuiProgrammi() throws Exception {
 
         super("Калорийность продуктов");
         viborFileIcon="yarrouappCaloriiWithGui/grafics/gui/food.jpg";//картинка по умолчанию для нового продукта

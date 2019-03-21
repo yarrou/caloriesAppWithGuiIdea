@@ -1,8 +1,7 @@
-package yarrou.app;
+package yarrou.app.core;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import yarrou.app.gui.GuiProgrammi;
+import yarrou.app.bazaDannich.BazaDannixLoad;
 
 public class OsnovnoyProcess {
     private GuiProgrammi glavnoeOkno;

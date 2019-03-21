@@ -1,27 +1,28 @@
-package yarrou.app;
+package yarrou.app.bazaDannich;
+
+import yarrou.app.gui.OknoDialogaZagruzki;
+import yarrou.app.core.Products;
 
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.Iterator;
 import java.util.Scanner;
-class BazaDannixLoad {
+public class BazaDannixLoad {
 	private ArrayList <Products>edaBaza;
 	private String putFile;
 	private boolean localBaza;
 	private String itogZagruzki;
-	ArrayList getEdaBaza(){
+	public ArrayList getEdaBaza(){
 		return edaBaza;
 	}
-	String getPutFile(){
+	public String getPutFile(){
 		return putFile;
 	}
 	private OknoDialogaZagruzki odz;
 	
 
 
-	void zagruzkaBazi() throws Exception {
+	public void zagruzkaBazi() throws Exception {
 		ArrayList <Products> edaBazaProcess= new ArrayList();
 		ArrayList <String> put_k_baze = new ArrayList();//создаем список путей к файлу с данными
 		put_k_baze.add("yarrouappCaloriiWithGui/baza/baza.txt");//по умолчанию

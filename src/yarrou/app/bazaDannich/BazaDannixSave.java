@@ -1,8 +1,9 @@
-package yarrou.app;
+package yarrou.app.bazaDannich;
+
+import yarrou.app.core.Products;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.Iterator;
 
 public class BazaDannixSave {

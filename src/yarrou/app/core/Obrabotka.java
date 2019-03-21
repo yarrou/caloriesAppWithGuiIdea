@@ -1,4 +1,4 @@
-package yarrou.app;
+package yarrou.app.core;
 
 import java.util.ArrayList;
 import java.util.Iterator;

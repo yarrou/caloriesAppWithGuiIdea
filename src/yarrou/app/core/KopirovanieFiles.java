@@ -1,4 +1,4 @@
-package yarrou.app;
+package yarrou.app.core;
 
 import java.io.File;
 import java.io.IOException;

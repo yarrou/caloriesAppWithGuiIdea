@@ -1,9 +1,6 @@
 package yarrou.app;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.*;
-import java.io.*;
+import yarrou.app.core.OsnovnoyProcess;
 
 
 public class Main {
