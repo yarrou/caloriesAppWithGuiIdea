@@ -8,21 +8,21 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class BazaDannixLoad {
-	private ArrayList <Products>edaBaza;
-	private String putFile;
-	private boolean localBaza;
-	private String itogZagruzki;
-	public ArrayList getEdaBaza(){
+	private static ArrayList <Products>edaBaza;
+	private static String putFile;
+	private static boolean localBaza;
+	private static String itogZagruzki;
+	public static ArrayList getEdaBaza(){
 		return edaBaza;
 	}
-	public String getPutFile(){
+	public static String getPutFile(){
 		return putFile;
 	}
 	private OknoDialogaZagruzki odz;
 	
 
 
-	public void zagruzkaBazi() throws Exception {
+	public static void zagruzkaBazi() throws Exception {
 		ArrayList <Products> edaBazaProcess= new ArrayList();
 		ArrayList <String> put_k_baze = new ArrayList();//создаем список путей к файлу с данными
 		put_k_baze.add("yarrouappCaloriiWithGui/baza/baza.txt");//по умолчанию
@@ -33,7 +33,7 @@ public class BazaDannixLoad {
 		for (String putFil:put_k_baze){
 			File bazaProducts = new File(putFil);
 			if (bazaProducts.exists()){
-				this.putFile=putFil;
+				putFile=putFil;
 				itogZagruzki=("локальная база загруженна по пути " + putFile);
 				localBaza=true;
 				FileReader bazaReader = new FileReader(putFile);
@@ -64,6 +64,6 @@ public class BazaDannixLoad {
 			putFile="yarrouappCaloriiWithGui/baza/baza.txt";
 		}
 		OknoDialogaZagruzki odz =new OknoDialogaZagruzki(itogZagruzki);
-	this.edaBaza=edaBazaProcess;
+	edaBaza=edaBazaProcess;
 	}
 }

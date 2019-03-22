@@ -170,15 +170,15 @@ public class GuiProgrammi extends JFrame {
         sozProdCreateButton.addActionListener(new ActionListener() {//метод добавления нового продукта
 
             public void actionPerformed(ActionEvent event) {
-                dobNewProdGui.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),
+                DobavlenieNovogoProducta.dobavlyemProduct(sozProdNameTextfield.getText(),sozProdCaloriiTextfield.getText(),sozProdBelkiTextfield.getText(),
                         sozProdJiriTextfield.getText(),sozProdUglevodiTextfield.getText(),viborFileIcon);
                 BazaDannixSave bazaDannixSave= new BazaDannixSave();
                 try {
-                    bazaDannixSave.saveBaza(putBazaSave,dobNewProdGui.getBazaDannihNew());
+                    bazaDannixSave.saveBaza(putBazaSave,DobavlenieNovogoProducta.getBazaDannihNew());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if (dobNewProdGui.getDobavlenieItog()){
+                if (DobavlenieNovogoProducta.getDobavlenieItog()){
                     JOptionPane.showMessageDialog(sozProdCreateButton, "продукт успешно добавлен", "Информация", JOptionPane.WARNING_MESSAGE);
                 }
 

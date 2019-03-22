@@ -8,29 +8,29 @@ import java.util.Iterator;
 public class DobavlenieNovogoProducta {
 
 
-    public boolean getDobavlenieItog() {
+    public static boolean getDobavlenieItog() {
         return dobavlenieItog;
     }
-    private boolean dobavlenieItog;
+    private static boolean dobavlenieItog;
 
 
-    private ArrayList<Products> bazaDannihNew;
-    void setBazaDannihNew(ArrayList<Products> bdnp){
-        this.bazaDannihNew=bdnp;
+    private static ArrayList<Products> bazaDannihNew;
+    static void setBazaDannihNew(ArrayList<Products> bdnp){
+        bazaDannihNew=bdnp;
     }
-    public ArrayList<Products> getBazaDannihNew(){
+    public static ArrayList<Products> getBazaDannihNew(){
         return bazaDannihNew;
     }
 
 
-    private String itogAddNewProduct;
+    private static String itogAddNewProduct;
     public String getItogAddNewProduct(){
         return itogAddNewProduct;
     }
 
 
-    public void dobavlyemProduct(String nameNewProduct, String energoNewProduct, String belkiNewProduct, String jiriNewProduct, String uglevodiNewProduct, String putIconNewProduct){
-        this.dobavlenieItog=true;
+    public static void dobavlyemProduct(String nameNewProduct, String energoNewProduct, String belkiNewProduct, String jiriNewProduct, String uglevodiNewProduct, String putIconNewProduct){
+        dobavlenieItog=true;
         try{
         double energod=Double.parseDouble(energoNewProduct);
         double belkid=Double.parseDouble(belkiNewProduct);
@@ -48,7 +48,7 @@ public class DobavlenieNovogoProducta {
             }
         }
         if (productNewInBaza){
-            this.bazaDannihNew.add(addNewProducts);
+            bazaDannihNew.add(addNewProducts);
             itogAddNewProduct="продукт успешно добавлен";
         }}
         catch (NumberFormatException e){
