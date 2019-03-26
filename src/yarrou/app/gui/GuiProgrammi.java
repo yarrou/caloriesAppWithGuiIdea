@@ -6,11 +6,13 @@ import yarrou.app.core.KopirovanieFiles;
 import yarrou.app.core.Obrabotka;
 import yarrou.app.core.Products;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,10 +24,8 @@ public class GuiProgrammi extends JFrame {
         return opisanieProductaLabel;
     }
     String viborFileIcon;
-    private DobavlenieNovogoProducta dobNewProdGui;
-    public void setDobNewProdGui(DobavlenieNovogoProducta dnpg){
-        this.dobNewProdGui=dnpg;
-    }
+    //private DobavlenieNovogoProducta dobNewProdGui;
+    //public void setDobNewProdGui(DobavlenieNovogoProducta dnpg){this.dobNewProdGui=dnpg;}
 
 
 
@@ -49,8 +49,8 @@ public class GuiProgrammi extends JFrame {
         super("Калорийность продуктов");
         viborFileIcon="yarrouappCaloriiWithGui/grafics/gui/food.jpg";//картинка по умолчанию для нового продукта
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        ImageIcon iconProgram = new ImageIcon("yarrouappCaloriiWithGui/grafics/gui/caloriiIcon.png");//иконка программы
-        setIconImage(iconProgram.getImage());
+        BufferedImage iconProgram = ImageIO.read(getClass().getClassLoader().getResource("grafics/gui/caloriiIcon.png"));//иконка программы
+        setIconImage(iconProgram);
 
 
 
@@ -66,8 +66,8 @@ public class GuiProgrammi extends JFrame {
         JPanel zaprosPanel=new JPanel();//вкладка ввода запроса
         JLabel iskomiyProductLabel=new JLabel("искомый продукт");
         JTextField vvodTeksta=new JTextField(14);//поле ввода запроса
-        JButton poiskButton=new JButton("поиск",new ImageIcon("yarrouappCaloriiWithGui/grafics/gui/poisk.png"));//кнопка поиска
-
+        ImageIcon poiskImage=new ImageIcon(getClass().getClassLoader().getResource("grafics/gui/poisk.png")) ;
+        JButton poiskButton=new JButton("поиск",poiskImage);//кнопка поиска
         zaprosPanel.add(iskomiyProductLabel);
         zaprosPanel.add(vvodTeksta);
         zaprosPanel.add(poiskButton);

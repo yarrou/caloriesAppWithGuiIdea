@@ -6,7 +6,6 @@ import yarrou.app.bazaDannich.BazaDannixLoad;
 public class OsnovnoyProcess {
     private GuiProgrammi glavnoeOkno;
     public  void osnProc () throws Exception{
-
         BazaDannixLoad.zagruzkaBazi();//загружаем базу данных
         GuiProgrammi glavnoeOkno=new GuiProgrammi();//создаем интерфейс программы
         glavnoeOkno.setVisible(true);
