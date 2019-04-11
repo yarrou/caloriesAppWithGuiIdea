@@ -24,8 +24,6 @@ public class GuiProgrammi extends JFrame {
         return opisanieProductaLabel;
     }
     String viborFileIcon;
-    //private DobavlenieNovogoProducta dobNewProdGui;
-    //public void setDobNewProdGui(DobavlenieNovogoProducta dnpg){this.dobNewProdGui=dnpg;}
 
 
 
@@ -156,8 +154,7 @@ public class GuiProgrammi extends JFrame {
                     viborFileIcon="yarrouappCaloriiWithGui/grafics/products/"+sozProdNameTextfield.getText()+".jpg";//переменная пути к файлу-копии
                     File copyFile= new File(viborFileIcon);
                     System.out.println(viborFileIcon);
-                    KopirovanieFiles kopiFile=new KopirovanieFiles();//копированин файлов
-                    kopiFile.kopirovanie(fileChooser,copyFile);
+                    KopirovanieFiles.kopirovanie(fileChooser,copyFile);
 
 
 

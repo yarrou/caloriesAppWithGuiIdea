@@ -6,6 +6,11 @@ package yarrou.app.bazaDannich;/*
  */
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class BazaDannichCreator {
     public static boolean directoriesCreator(String put){
@@ -16,6 +21,30 @@ public class BazaDannichCreator {
         else {
             papka.mkdirs();
             return false;
+        }
+
+    }
+    public void createFilesFromResourses(String otkuda,String kuda) {
+        URL putiz =getClass().getClassLoader().getResource(otkuda);
+        InputStream inputStream= null;
+        File proverka=new File(kuda);
+        if (proverka.exists()==false) {
+            try {
+                inputStream = putiz.openStream();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Files.copy(inputStream, Paths.get(kuda));
+                System.out.println("file copies");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+else {
+    System.out.println("файл уже существует");
         }
 
     }
